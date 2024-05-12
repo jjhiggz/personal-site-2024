@@ -1,6 +1,5 @@
 "use client";
 import { links } from "@/app/constants";
-import { LinkData } from "@/app/types";
 import { NavLink } from "@/components/Header/NavLink";
 import { Dispatch, SetStateAction } from "react";
 

@@ -4,7 +4,7 @@ import { Nav } from "./Nav";
 import { HamburgerMenu } from "./HamburgerMenu";
 
 export const Header = () => {
-  const [showHamburger, setShowHamburger] = useState(true);
+  const [showHamburger, setShowHamburger] = useState(false);
 
   return (
     <>
