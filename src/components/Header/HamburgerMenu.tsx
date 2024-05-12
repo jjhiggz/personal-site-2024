@@ -1,7 +1,9 @@
 import { links } from "@/app/constants";
-import useClickOutside from "@/app/hooks/useClickOutside";
-import useKeyListener from "@/app/hooks/useKeyListener";
+import useClickOutside from "@/hooks/useClickOutside";
+import useKeyListener from "@/hooks/useKeyListener";
+import { getIsActive } from "@/utils/route-helpers";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useRef } from "react";
 
 export const HamburgerMenuNavLink = ({
@@ -11,11 +13,26 @@ export const HamburgerMenuNavLink = ({
   to: string;
   text: string;
 }) => {
+  const path = usePathname();
+  const isActive = getIsActive(path, to);
+
+  if (!isActive) {
+    return (
+      <div className="w-full bg-slate-300">
+        <Link
+          href={to}
+          className="text-black flex justify-center items-center shadow-sm shadow-slate-600 hover:bg-slate-400"
+        >
+          {text}
+        </Link>
+      </div>
+    );
+  }
   return (
-    <div className="w-full bg-slate-300">
+    <div className="w-full bg-slate-600">
       <Link
         href={to}
-        className="text-black flex justify-center items-center shadow-sm shadow-slate-600 hover:bg-slate-400"
+        className=" flex justify-center items-center shadow-sm shadow-slate-600 hover:bg-slate-400 text-white"
       >
         {text}
       </Link>
