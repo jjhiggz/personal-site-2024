@@ -1,4 +1,4 @@
-import { PageLayout } from "@/components/PageLayout";
+import { PageLayout } from "@/components/Layouts/PageLayout";
 import { ReactNode } from "react";
 import { images } from "../images";
 

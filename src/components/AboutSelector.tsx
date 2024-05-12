@@ -1,6 +1,12 @@
 "use client";
 import { LinkData } from "@/app/types";
 import useKeyListener from "@/hooks/useKeyListener";
+import {
+  SetSearchParams,
+  useSearchParamsState,
+} from "@/hooks/useSearchParamsState";
+import { wait } from "@/utils/wait";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 
 const aboutSelectorOptions: LinkData[] = [
@@ -29,14 +35,31 @@ const AboutSelectorOption = ({
 }: {
   option: LinkData;
   isSelected: boolean;
-  setSelectedOption: Dispatch<SetStateAction<LinkData>>;
+  setSelectedOption: SetSearchParams<LinkData>;
 }) => {
+  const router = useRouter();
+  const goToRoute = () => {
+    setSelectedOption(option);
+    wait(500).then(() => {
+      router.push(option.to);
+    });
+  };
+
+  useKeyListener({
+    keys: ["Enter"],
+    activeWhen: isSelected,
+    handler: () => {
+      goToRoute();
+    },
+    onKey: "down",
+  });
+
   if (isSelected) {
     return (
       <p
-        className="text-green-400 cursor-pointer"
+        className="text-green-400 cursor-pointer "
         onClick={() => {
-          setSelectedOption(option);
+          goToRoute();
         }}
       >
         ➡️ [[{option.text}]]
@@ -45,28 +68,40 @@ const AboutSelectorOption = ({
   }
 
   return (
-    <p
-      className="cursor-pointer hover:text-green-300 w-auto"
-      onClick={() => {
-        setSelectedOption(option);
-      }}
-    >
-      • {option.text}
-    </p>
+    <>
+      <span>
+        <p
+          className="cursor-pointer hover:text-green-300 w-auto"
+          onClick={() => {
+            goToRoute();
+          }}
+        >
+          • {option.text}
+        </p>
+      </span>
+    </>
   );
 };
 
+const defaultOption = aboutSelectorOptions[0];
 export const AboutSelector = () => {
-  const [selectedOption, setSelectedOption] = useState(aboutSelectorOptions[0]);
+  const [selectedOption, setSelectedOption] = useSearchParamsState({
+    defaultValue: defaultOption,
+    key: "selectedAboutOption",
+  });
 
   const selectNextOption = () => {
-    const currentIndex = aboutSelectorOptions.indexOf(selectedOption);
+    const currentIndex = aboutSelectorOptions.findIndex(
+      (option) => selectedOption?.to === option.to
+    );
     const nextIndex = (currentIndex + 1) % aboutSelectorOptions.length;
     setSelectedOption(aboutSelectorOptions[nextIndex]);
   };
 
   const selectPreviousOption = () => {
-    const currentIndex = aboutSelectorOptions.indexOf(selectedOption);
+    const currentIndex = aboutSelectorOptions.findIndex(
+      (option) => selectedOption?.to === option.to
+    );
     const previousIndex =
       (currentIndex - 1 + aboutSelectorOptions.length) %
       aboutSelectorOptions.length;
@@ -74,7 +109,7 @@ export const AboutSelector = () => {
   };
 
   useKeyListener({
-    keys: ["j"],
+    keys: ["j", "ArrowDown", "s"],
     activeWhen: true,
     handler: () => {
       selectNextOption();
@@ -83,20 +118,21 @@ export const AboutSelector = () => {
   });
 
   useKeyListener({
-    keys: ["k"],
+    keys: ["k", "ArrowUp", "w"],
     activeWhen: true,
     handler: () => {
       selectPreviousOption();
     },
     onKey: "down",
   });
+
   return (
     <div>
       {aboutSelectorOptions.map((option) => (
         <AboutSelectorOption
           option={option}
           key={option.to}
-          isSelected={option.to === selectedOption.to}
+          isSelected={option.to === selectedOption?.to}
           setSelectedOption={setSelectedOption}
         />
       ))}

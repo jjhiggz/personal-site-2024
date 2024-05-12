@@ -1,7 +1,25 @@
 import type { KeyboardEvent } from "react";
 import { useCallback, useEffect } from "react";
 
-type ValidKey = "Escape" | "Enter" | "Tab" | "Shift" | "j" | "k";
+type ValidKey =
+  | "Escape"
+  | "Enter"
+  | "Tab"
+  | "Shift"
+  | "j"
+  | "k"
+  | "h"
+  | "l"
+  | "w"
+  | "s"
+  | "a"
+  | "d"
+  | "ArrowUp"
+  | "ArrowDown"
+  | "ArrowRight"
+  | "ArrowLeft"
+  | "any";
+
 type ModifierKeys = "metaKey" | "ctrlKey" | "altKey";
 
 type UseKeyProps = {
@@ -42,7 +60,6 @@ const useKeyListener = ({
 }: UseKeyProps) => {
   const eventListener = useCallback(
     (e: KeyboardEvent) => {
-      // console.log({ keys, key: e.key });
       if (keys.includes(e.key as ValidKey)) {
         if (!modifierKeys?.length) {
           handler();
