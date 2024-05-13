@@ -1,7 +1,6 @@
 "use client";
 import { safeJSONParse } from "@/utils/safe-json-parse";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 
 export type SetSearchParams<T> = (newValue: T) => void;
 

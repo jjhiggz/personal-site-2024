@@ -1,8 +1,7 @@
 "use client";
 import { getIsActive } from "@/utils/route-helpers";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export const NavLink = ({ to, text }: { to: string; text: string }) => {
   const pathname = usePathname();

@@ -62,7 +62,7 @@ export const HamburgerMenu = ({
 
   return (
     <div
-      className="absolute z-10 mt-12 w-full p-0 md:hidden"
+      className="absolute z-50 mt-12 w-full p-0 md:hidden"
       ref={$hamburgerRef}
     >
       {links.map((link) => (

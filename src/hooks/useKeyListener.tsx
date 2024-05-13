@@ -14,6 +14,7 @@ type ValidKey =
   | "s"
   | "a"
   | "d"
+  | "Backspace"
   | "ArrowUp"
   | "ArrowDown"
   | "ArrowRight"
@@ -60,6 +61,7 @@ const useKeyListener = ({
 }: UseKeyProps) => {
   const eventListener = useCallback(
     (e: KeyboardEvent) => {
+      console.log(e.key);
       if (keys.includes(e.key as ValidKey)) {
         if (!modifierKeys?.length) {
           handler();

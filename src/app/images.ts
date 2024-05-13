@@ -4,6 +4,9 @@ import background3 from "../../public/pattern-3.webp";
 import background4 from "../../public/pattern-4.jpeg";
 import background5 from "../../public/pattern-5.png";
 import mainAboutMe from "../../public/main-picture.png";
+import meWithGuitar from "../../public/band-photo.jpeg";
+import doomslayer from "../../public/doomslayer.png";
+import softwareDeveloper from "../../public/software-developer.png";
 
 export const images = {
   backgrounds: {
@@ -15,5 +18,8 @@ export const images = {
   },
   about: {
     main: mainAboutMe,
+    musician: meWithGuitar,
+    ["software-developer"]: softwareDeveloper,
+    ["dog-dad"]: doomslayer,
   },
 };

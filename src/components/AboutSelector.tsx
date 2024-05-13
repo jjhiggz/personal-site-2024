@@ -6,8 +6,7 @@ import {
   useSearchParamsState,
 } from "@/hooks/useSearchParamsState";
 import { wait } from "@/utils/wait";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const aboutSelectorOptions: LinkData[] = [
   {
@@ -127,20 +126,28 @@ export const AboutSelector = () => {
   });
 
   return (
-    <div>
-      {aboutSelectorOptions.map((option) => (
-        <AboutSelectorOption
-          option={option}
-          key={option.to}
-          isSelected={option.to === selectedOption?.to}
-          setSelectedOption={setSelectedOption}
-        />
-      ))}
-      <br />
-      <p>[ Please Pick With Arrows Or Mouse ]</p>
-      <br />
-      <br />
-      <p>[ I use vim btw... ]</p>
-    </div>
+    <>
+      <div className="ml-8">
+        <p>Hi I{"'"}m Jon 👋,</p>
+        <br />
+        <p>I am a...</p>
+        <br />
+        <div>
+          {aboutSelectorOptions.map((option) => (
+            <AboutSelectorOption
+              option={option}
+              key={option.to}
+              isSelected={option.to === selectedOption?.to}
+              setSelectedOption={setSelectedOption}
+            />
+          ))}
+          <br />
+          <p>[ Please Pick With Arrows Or Mouse ]</p>
+          <br />
+          <br />
+          <p>[ I use vim btw... ]</p>
+        </div>
+      </div>
+    </>
   );
 };
