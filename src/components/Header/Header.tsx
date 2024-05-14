@@ -15,6 +15,7 @@ export const Header = () => {
           showHamburger={showHamburger}
         />
       </header>
+      <div className="h-12"></div>
       {showHamburger && (
         <HamburgerMenu
           setShowHamburger={setShowHamburger}

@@ -23,7 +23,6 @@ import {
   SiZod,
 } from "react-icons/si";
 import { BackspaceText } from "./BackspaceText";
-import { DiJavascript } from "react-icons/di";
 
 export const SoftwareDeveloperContent = () => {
   return (
