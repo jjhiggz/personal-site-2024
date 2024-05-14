@@ -1,6 +1,6 @@
 "use client";
 import { safeJSONParse } from "@/utils/safe-json-parse";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 export type SetSearchParams<T> = (newValue: T) => void;
 
@@ -40,6 +40,7 @@ export const useSearchParamsState = <T,>({
 }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+
   const pathname = usePathname();
 
   const value = safeJSONParse<T>(searchParams.get(key));
@@ -48,8 +49,13 @@ export const useSearchParamsState = <T,>({
   const setValue = (newValue: T) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
     newSearchParams.set(key, JSON.stringify(newValue));
-    const newUrl = `${pathname}?${newSearchParams.toString()}`;
-    router.push(newUrl);
+    window.history.pushState(
+      {},
+      "",
+      `${pathname}?${newSearchParams.toString()}`
+    );
+
+    router.push(`${pathname}?${newSearchParams.toString()}`);
   };
 
   return [

@@ -1,5 +1,7 @@
 "use client";
 
+import { BackspaceText } from "./BackspaceText";
+
 export const SoftwareDeveloperContent = () => {
   return (
     <>
@@ -75,7 +77,7 @@ export const SoftwareDeveloperContent = () => {
         </ul>
       </div>
       <br />
-      <div>[Press Backspace to Return]</div>
+      <BackspaceText />
     </>
   );
 };

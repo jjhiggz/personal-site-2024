@@ -1,12 +1,11 @@
 "use client";
 import { LinkData } from "@/app/types";
 import useKeyListener from "@/hooks/useKeyListener";
-import {
-  SetSearchParams,
-  useSearchParamsState,
-} from "@/hooks/useSearchParamsState";
+import { useSearchParamsState } from "@/hooks/useSearchParamsState";
+import { twcx } from "@/utils/tailwind-helpers";
 import { wait } from "@/utils/wait";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const aboutSelectorOptions: LinkData[] = [
   {
@@ -30,39 +29,31 @@ const aboutSelectorOptions: LinkData[] = [
 const AboutSelectorOption = ({
   option,
   isSelected,
-  setSelectedOption,
+  isNavigating,
+  onClick,
 }: {
   option: LinkData;
   isSelected: boolean;
-  setSelectedOption: SetSearchParams<LinkData>;
+  isNavigating: boolean;
+  onClick: (option: LinkData) => void;
 }) => {
-  const router = useRouter();
-  const goToRoute = () => {
-    setSelectedOption(option);
-    wait(500).then(() => {
-      router.push(option.to);
-    });
-  };
-
-  useKeyListener({
-    keys: ["Enter"],
-    activeWhen: isSelected,
-    handler: () => {
-      goToRoute();
-    },
-    onKey: "down",
-  });
-
   if (isSelected) {
     return (
-      <p
-        className="text-green-400 cursor-pointer "
-        onClick={() => {
-          goToRoute();
-        }}
-      >
-        ➡️ [[{option.text}]]
-      </p>
+      <div className="flex">
+        <p
+          className={twcx({
+            "text-green-400": !isNavigating,
+            "cursor-pointer": !isNavigating,
+            "text-yellow-200": isNavigating,
+            "cursor-wait": isNavigating,
+          })}
+          onClick={() => {
+            onClick(option);
+          }}
+        >
+          ➡️ [[{option.text}]]
+        </p>
+      </div>
     );
   }
 
@@ -70,9 +61,12 @@ const AboutSelectorOption = ({
     <>
       <span>
         <p
-          className="cursor-pointer hover:text-green-300 w-auto"
+          className={twcx("hover:text-gray-300", {
+            "cursor-not-allowed": isNavigating,
+            "cursor-pointer": !isNavigating,
+          })}
           onClick={() => {
-            goToRoute();
+            onClick(option);
           }}
         >
           • {option.text}
@@ -83,7 +77,9 @@ const AboutSelectorOption = ({
 };
 
 const defaultOption = aboutSelectorOptions[0];
+
 export const AboutSelector = () => {
+  const [isNavigating, setIsNavigating] = useState(false);
   const [selectedOption, setSelectedOption] = useSearchParamsState({
     defaultValue: defaultOption,
     key: "selectedAboutOption",
@@ -94,6 +90,7 @@ export const AboutSelector = () => {
       (option) => selectedOption?.to === option.to
     );
     const nextIndex = (currentIndex + 1) % aboutSelectorOptions.length;
+
     setSelectedOption(aboutSelectorOptions[nextIndex]);
   };
 
@@ -106,6 +103,8 @@ export const AboutSelector = () => {
       aboutSelectorOptions.length;
     setSelectedOption(aboutSelectorOptions[previousIndex]);
   };
+
+  const router = useRouter();
 
   useKeyListener({
     keys: ["j", "ArrowDown", "s"],
@@ -125,22 +124,52 @@ export const AboutSelector = () => {
     onKey: "down",
   });
 
+  useKeyListener({
+    keys: ["Enter"],
+    activeWhen: true,
+    handler: () => {
+      if (!isNavigating) {
+        setIsNavigating(true);
+        wait(300).then(() => {
+          const to = selectedOption?.to;
+          if (to) router.push(to);
+        });
+      }
+    },
+    onKey: "down",
+  });
+
   return (
     <>
-      <div className="ml-8">
+      <div className="ml-8 select-none">
         <p>Hi I{"'"}m Jon 👋,</p>
         <br />
         <p>I am a...</p>
         <br />
         <div>
-          {aboutSelectorOptions.map((option) => (
-            <AboutSelectorOption
-              option={option}
-              key={option.to}
-              isSelected={option.to === selectedOption?.to}
-              setSelectedOption={setSelectedOption}
-            />
-          ))}
+          {aboutSelectorOptions.map((option) => {
+            const isSelected = option.to === selectedOption?.to;
+            return (
+              <AboutSelectorOption
+                option={option}
+                key={option.to}
+                isSelected={isSelected}
+                isNavigating={isNavigating}
+                onClick={(option) => {
+                  if (isNavigating) return;
+                  if (isSelected) {
+                    setIsNavigating(true);
+                    wait(300).then(() => {
+                      router.push(option.to);
+                    });
+                  } else {
+                    setIsNavigating(false);
+                    setSelectedOption(option);
+                  }
+                }}
+              />
+            );
+          })}
           <br />
           <p>[ Please Pick With Arrows Or Mouse ]</p>
           <br />

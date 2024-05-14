@@ -2,6 +2,7 @@ import { images } from "@/app/images";
 import { DogDadContent } from "@/components/About/DogDadContent";
 import { MusicianContent } from "@/components/About/MusicianContent";
 import { SoftwareDeveloperContent } from "@/components/About/SoftwareDeveloperContent";
+import { TeacherContent } from "@/components/About/TeacherContent";
 import { AboutLayout } from "@/components/Layouts/AboutLayout";
 import { TerminalLayout } from "@/components/Terminal/TerminalLayout";
 
@@ -9,7 +10,7 @@ const AboutChildSwitch = ({ aboutId }: { aboutId: string }) => {
   if (aboutId === "musician") return <MusicianContent />;
   if (aboutId === "software-developer") return <SoftwareDeveloperContent />;
   if (aboutId === "dog-dad") return <DogDadContent />;
-  if (aboutId === "teacher") return <MusicianContent />;
+  if (aboutId === "teacher") return <TeacherContent />;
 };
 
 const defaultImage = images.about.main;

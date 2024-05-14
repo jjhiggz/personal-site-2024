@@ -1,5 +1,6 @@
 import { asciiDrawings } from "@/utils/ascii-drawings";
 import { AsciiArt } from "../Terminal/AsciiArt";
+import { BackspaceText } from "./BackspaceText";
 
 export const DogDadContent = () => {
   return (
@@ -27,8 +28,8 @@ export const DogDadContent = () => {
       <div className="mt-4">
         <AsciiArt text={asciiDrawings.doomslayer} />
       </div>
+      <BackspaceText />
       <br />
-      <div>[Press Backspace to Return]</div>
     </>
   );
 };

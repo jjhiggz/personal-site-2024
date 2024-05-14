@@ -7,6 +7,7 @@ import mainAboutMe from "../../public/main-picture.png";
 import meWithGuitar from "../../public/band-photo.jpeg";
 import doomslayer from "../../public/doomslayer.png";
 import softwareDeveloper from "../../public/software-developer.png";
+import dressedLikeMe from "../../public/dressed-like-me.png";
 
 export const images = {
   backgrounds: {
@@ -21,5 +22,6 @@ export const images = {
     musician: meWithGuitar,
     ["software-developer"]: softwareDeveloper,
     ["dog-dad"]: doomslayer,
+    ["teacher"]: dressedLikeMe,
   },
 };

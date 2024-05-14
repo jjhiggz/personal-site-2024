@@ -1,6 +1,7 @@
 "use client";
 import { asciiDrawings } from "@/utils/ascii-drawings";
 import { AsciiArt } from "../Terminal/AsciiArt";
+import { BackspaceText } from "./BackspaceText";
 
 export const MusicianContent = () => {
   return (
@@ -46,7 +47,7 @@ export const MusicianContent = () => {
         <AsciiArt text={asciiDrawings.piano} />
       </div>
       <br />
-      <div>[Press Backspace to Return]</div>
+      <BackspaceText />
     </>
   );
 };
