@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Jon Higger Software Developer",
   description: "Jon Higger is a Cool Programmer let's go",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

@@ -2,6 +2,7 @@ import { links } from "@/app/constants";
 import useClickOutside from "@/hooks/useClickOutside";
 import useKeyListener from "@/hooks/useKeyListener";
 import { getIsActive } from "@/utils/route-helpers";
+import { twcx } from "@/utils/tailwind-helpers";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useRef } from "react";
@@ -16,23 +17,18 @@ export const HamburgerMenuNavLink = ({
   const path = usePathname();
   const isActive = getIsActive(path, to);
 
-  if (!isActive) {
-    return (
-      <div className="w-full bg-slate-300">
-        <Link
-          href={to}
-          className="text-black flex justify-center items-center shadow-sm shadow-slate-600 hover:bg-slate-400"
-        >
-          {text}
-        </Link>
-      </div>
-    );
-  }
   return (
-    <div className="w-full bg-slate-600">
+    <div className="w-full bg-slate-300 ">
       <Link
         href={to}
-        className=" flex justify-center items-center shadow-sm shadow-slate-600 hover:bg-slate-400 text-white"
+        className={twcx(
+          "text-black flex justify-center items-center shadow-sm shadow-slate-600hover:bg-slate-400 h-10",
+          {
+            "bg-slate-500": isActive,
+            "text-white": isActive,
+            "hover:bg-slate-400": !isActive,
+          }
+        )}
       >
         {text}
       </Link>
