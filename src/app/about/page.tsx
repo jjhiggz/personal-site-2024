@@ -1,10 +1,20 @@
-import Image from "next/image";
-import { Header } from "@/components/Header/Header";
-import { PageLayout } from "@/components/PageLayout";
 import { images } from "../images";
+import { AboutSelector } from "@/components/AboutSelector";
+import { AboutLayout } from "@/components/Layouts/AboutLayout";
+import { TerminalLayout } from "@/components/Terminal/TerminalLayout";
 
 const AboutPage = () => {
-  return <h1>About Page</h1>;
+  return (
+    <AboutLayout
+      image={images.about.main}
+      content={
+        <>
+          <TerminalLayout content={<AboutSelector />} path="about" />
+        </>
+      }
+      title="About Me..."
+    />
+  );
 };
 
 export default AboutPage;

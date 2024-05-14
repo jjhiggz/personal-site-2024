@@ -3,6 +3,11 @@ import background2 from "../../public/pattern-2.webp";
 import background3 from "../../public/pattern-3.webp";
 import background4 from "../../public/pattern-4.jpeg";
 import background5 from "../../public/pattern-5.png";
+import mainAboutMe from "../../public/main-picture.png";
+import meWithGuitar from "../../public/band-photo.jpeg";
+import doomslayer from "../../public/doomslayer.png";
+import softwareDeveloper from "../../public/software-developer.png";
+import dressedLikeMe from "../../public/dressed-like-me.png";
 
 export const images = {
   backgrounds: {
@@ -11,5 +16,12 @@ export const images = {
     background3,
     background4,
     background5,
+  },
+  about: {
+    main: mainAboutMe,
+    musician: meWithGuitar,
+    ["software-developer"]: softwareDeveloper,
+    ["dog-dad"]: doomslayer,
+    ["teacher"]: dressedLikeMe,
   },
 };
