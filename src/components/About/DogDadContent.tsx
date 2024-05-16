@@ -1,5 +1,3 @@
-import { asciiDrawings } from "@/utils/ascii-drawings";
-import { AsciiArt } from "../Terminal/AsciiArt";
 import { BackspaceText } from "./BackspaceText";
 
 export const DogDadContent = () => {
@@ -24,9 +22,6 @@ export const DogDadContent = () => {
           <li>I got him during COVID, when I was alone</li>
           <li>And now without doomie, home wouldn{"'"}t be home</li>
         </ul>
-      </div>
-      <div className="mt-4">
-        <AsciiArt text={asciiDrawings.doomslayer} />
       </div>
       <BackspaceText />
       <br />

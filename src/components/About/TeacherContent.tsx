@@ -1,11 +1,9 @@
-import { asciiDrawings } from "@/utils/ascii-drawings";
-import { AsciiArt } from "../Terminal/AsciiArt";
 import { BackspaceText } from "./BackspaceText";
 
 export const TeacherContent = () => {
   return (
     <>
-      <div className="ml-8">
+      <div className="ml-8 ">
         <ul className="list-disc list-inside">
           <li>To teach is to learn, But you learn when you teach</li>
           <li>Programming{"'"}s a challenge but not out of reach </li>
@@ -15,9 +13,6 @@ export const TeacherContent = () => {
           <li>But if your code isn{"'"}t clean </li>
           <li>Then I{"'"}ll (in a friendly way) roast your ass </li>
         </ul>
-      </div>
-      <div className="mt-4">
-        <AsciiArt text={asciiDrawings.apple} />
       </div>
       <br />
       <BackspaceText />

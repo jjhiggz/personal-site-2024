@@ -22,6 +22,15 @@ const config: Config = {
         fade: "fadeIn 1s ease-in-out",
         blink: "blink 2s infinite",
       },
+      flex: {
+        ["2"]: "2",
+        ["3"]: "3",
+        ["4"]: "4",
+        ["5"]: "5",
+        ["6"]: "6",
+        ["7"]: "7",
+        ["8"]: "8",
+      },
 
       keyframes: {
         blink: {
@@ -41,6 +50,7 @@ const config: Config = {
     },
   },
   plugins: [
+    require("tailwind-scrollbar"),
     plugin(function ({ addUtilities, matchUtilities, theme }) {
       matchUtilities(
         {

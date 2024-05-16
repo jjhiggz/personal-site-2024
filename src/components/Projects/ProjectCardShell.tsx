@@ -14,10 +14,10 @@ export const ProjectCardShell = ({
 }) => {
   return (
     <div
-      className={twcx("transition-all duration-500 aspect-square ", {
-        "flex p-10": !isAnyProjectSelected,
-        "col-span-full row-span-full ": isThisProjectSelected,
-        "opacity-0": shouldHide,
+      className={twcx("transition-all duration-500 ", {
+        "flex p-10 aspect-square": !isAnyProjectSelected,
+        "min-h-full w-full": isThisProjectSelected,
+        hidden: shouldHide,
       })}
     >
       {children}
