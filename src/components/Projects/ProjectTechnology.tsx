@@ -18,7 +18,6 @@ export const ProjectTechnology = ({ project }: { project: Project }) => {
   useEffect(() => {
     // scroll to active technology
     const $element = document.querySelector("#tech-" + activeTechnology?.name);
-    console.log($element);
     $element?.scrollIntoView();
   }, [activeTechnology]);
 
@@ -74,8 +73,9 @@ export const ProjectTechnology = ({ project }: { project: Project }) => {
           onClick={() => {
             gotoPrevActiveTech();
           }}
+          className="opacity-80 cursor-pointer hover:opacity-100"
         />
-        <div className="w-72 flex overflow-x-scroll scrol gap-4  items-center scroll-m-0 scrollbar-none">
+        <div className=" w-52 md:w-72 flex overflow-x-scroll scrol gap-4  items-center scroll-m-0 scrollbar-none">
           {project.technologies.map((tech) => {
             const isActiveTech = tech.name === activeTechnology?.name;
             return (
@@ -100,6 +100,7 @@ export const ProjectTechnology = ({ project }: { project: Project }) => {
         </div>
 
         <CgChevronRight
+          className="opacity-80 cursor-pointer hover:opacity-100"
           onClick={() => {
             gotoNextActiveTech();
           }}

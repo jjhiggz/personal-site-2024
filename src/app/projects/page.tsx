@@ -1,11 +1,15 @@
 "use client";
 import { ProjectCard } from "@/components/Projects/ProjectCard";
 import { Project, projects } from "@/components/Projects/data";
+import { useSearchParamsState } from "@/hooks/useSearchParamsState";
 import { twcx } from "@/utils/tailwind-helpers";
-import { useState } from "react";
 
 const ProjectsPage = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] =
+    useSearchParamsState<Project | null>({
+      defaultValue: null,
+      key: "selectedProject",
+    });
 
   return (
     <>

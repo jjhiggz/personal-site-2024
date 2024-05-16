@@ -1,7 +1,17 @@
+export type Link = {
+  url: string;
+  title: string;
+};
+
 export type Project = {
   name: string;
   description: string;
   technologies: Technology[];
+  createdAt: string;
+  projectComplexity: number;
+  projectUsefulness: number;
+  funToCode: number;
+  links: Link[];
 };
 
 type KnownTechnologies =
@@ -184,6 +194,16 @@ export const projects: Project[] = [
     name: "Remenu",
     description:
       "Remenu is a scope specific CMS for restaurants that allows them to customize their menus on the fly. Remenu is simple enough for restaurant owners to use, easily embeddable by wordpress devs, and creates beautiful menus.",
+    createdAt: "April 1st, 2022",
+    links: [
+      {
+        url: "https://remenu.io",
+        title: "Remenu",
+      },
+    ],
+    funToCode: 4,
+    projectUsefulness: 5,
+    projectComplexity: 3,
     technologies: [
       technologies.Remix,
       technologies.React,
@@ -197,6 +217,16 @@ export const projects: Project[] = [
     name: "Portfolio",
     description:
       "This very site that you are viewing! It's a fun little project that took about a week to make",
+    createdAt: "May 24th, 2024",
+    funToCode: 5,
+    projectComplexity: 2,
+    projectUsefulness: 3,
+    links: [
+      {
+        url: "/",
+        title: "This Website",
+      },
+    ],
     technologies: [
       ...(
         [
@@ -213,6 +243,16 @@ export const projects: Project[] = [
     name: "DativeApp",
     description:
       "DativeApp is platform for partners to discover and track fun date ideas. You can download it right now if you have an iOS device",
+    links: [
+      {
+        url: "https://www.dativeapp.com/",
+        title: "Check Out DativeApp",
+      },
+    ],
+    createdAt: "May 6th, 2021",
+    funToCode: 5,
+    projectComplexity: 4,
+    projectUsefulness: 4,
     technologies: [
       ...(
         [
@@ -228,6 +268,13 @@ export const projects: Project[] = [
     name: "Noteworthy",
     description:
       "Noteworthy is a weekend experiment to play around with Elixir and Rust. The main data is built with Elixir and the Pheonix framework including Pheonix LiveView for frontend work",
+    createdAt: "January 30th, 2021",
+    funToCode: 5,
+    projectComplexity: 3,
+    projectUsefulness: 2,
+    links: [
+      { title: "Noteworthy", url: "https://github.com/jjhiggz/noteworthy" },
+    ],
     technologies: [
       ...(
         [
@@ -245,6 +292,16 @@ export const projects: Project[] = [
     name: "DoomTyper",
     description:
       'A "DOOM" themed typing test. Battle your friends, and have some fun <3',
+    createdAt: "",
+    links: [
+      {
+        title: "Doomtyper",
+        url: "https://github.com/jjhiggz/DOOMTYPER_fulstack",
+      },
+    ],
+    funToCode: 5,
+    projectComplexity: 3,
+    projectUsefulness: 1,
     technologies: [
       ...(
         ["VueJS", "Javascript", "CSS", "HTML"] satisfies KnownTechnologies[]
@@ -255,6 +312,16 @@ export const projects: Project[] = [
     name: "Property Tracker",
     description:
       "A property tracking application that provides the client with realtime feedback on the customers that are viewing.",
+    links: [
+      {
+        title: "Property Tracker Case Study",
+        url: "https://www.skycompassmedia.com/portfolio-spmultifamilygroup/",
+      },
+    ],
+    createdAt: "Oct 24, 2021",
+    funToCode: 4,
+    projectComplexity: 3,
+    projectUsefulness: 5,
     technologies: [
       ...(
         [
