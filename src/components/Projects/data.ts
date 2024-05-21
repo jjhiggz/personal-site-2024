@@ -12,9 +12,12 @@ export type Project = {
   projectUsefulness: number;
   funToCode: number;
   links: Link[];
+  loom: string;
 };
 
 type KnownTechnologies =
+  | "drizzle-orm"
+  | "Elysia"
   | "React"
   | "BlitzJS"
   | "Javascript"
@@ -46,6 +49,18 @@ export type Technology = {
   link?: string;
 };
 export const technologies: Record<KnownTechnologies, Technology> = {
+  "drizzle-orm": {
+    name: "drizzle-orm",
+    description:
+      "Drizzle is another typescript ORM similar to Prisma. Unlike prisma, it's more focused on being capable of raw-SQL-like queries, and also doesn't have a build step. This can make deploying it much easier, and working with it everyday a more general learning experience which I love. ",
+    link: "https://orm.drizzle.team/docs/overview",
+  },
+  Elysia: {
+    name: "Elysia",
+    description:
+      "Elysia is a backend framework for bun. It's very fun and it's typesafty is truly quite noice! As well as this it's pretty blazingly fast 🚀",
+    link: "https://elysiajs.com/",
+  },
   ReactQuery: {
     name: "ReactQuery",
     description:
@@ -194,6 +209,7 @@ export const projects: Project[] = [
     name: "Remenu",
     description:
       "Remenu is a scope specific CMS for restaurants that allows them to customize their menus on the fly. Remenu is simple enough for restaurant owners to use, easily embeddable by wordpress devs, and creates beautiful menus.",
+    loom: "https://www.loom.com/embed/05ab696a8c2140dfb842c81801d1d450?sid=77de584e-2ff3-4b72-82f7-88b2e70e0d39",
     createdAt: "April 1st, 2022",
     links: [
       {
@@ -203,7 +219,7 @@ export const projects: Project[] = [
     ],
     funToCode: 4,
     projectUsefulness: 5,
-    projectComplexity: 3,
+    projectComplexity: 4,
     technologies: [
       technologies.Remix,
       technologies.React,
@@ -211,6 +227,7 @@ export const projects: Project[] = [
       technologies["TSPattern"],
       technologies.Prisma,
       technologies.bun,
+      technologies.Postgres,
     ],
   },
   {
@@ -221,6 +238,7 @@ export const projects: Project[] = [
     funToCode: 5,
     projectComplexity: 2,
     projectUsefulness: 3,
+    loom: "https://www.loom.com/embed/2d2679c910db4188a75c8121c9cb8f55?sid=29b23544-3c16-4370-871d-11f3e668e58f",
     links: [
       {
         url: "/",
@@ -241,6 +259,7 @@ export const projects: Project[] = [
   },
   {
     name: "DativeApp",
+    loom: "https://www.loom.com/embed/1f2a6cf4121f4275995b82992fac37fe?sid=42ddc923-e677-4003-bf2a-c2e583c136d4",
     description:
       "DativeApp is platform for partners to discover and track fun date ideas. You can download it right now if you have an iOS device",
     links: [
@@ -260,6 +279,7 @@ export const projects: Project[] = [
           "ReactNative",
           "Firebase",
           "NestJS",
+          "Postgres",
         ] satisfies KnownTechnologies[]
       ).map((tech) => technologies[tech]),
     ],
@@ -287,16 +307,30 @@ export const projects: Project[] = [
         ] satisfies KnownTechnologies[]
       ).map((tech) => technologies[tech]),
     ],
+    loom: "https://www.loom.com/embed/18ea3bb8c04946f7976ef45f082efd2a",
   },
   {
     name: "DoomTyper",
+    loom: "https://www.loom.com/embed/9f9b47ad53de46eb934a03ccc6173b3a?sid=28f3fb33-375b-4478-9254-82f0d4f3f88e",
     description:
       'A "DOOM" themed typing test. Battle your friends, and have some fun <3',
     createdAt: "",
     links: [
       {
-        title: "Doomtyper",
+        title: "Original Repo",
         url: "https://github.com/jjhiggz/DOOMTYPER_fulstack",
+      },
+      {
+        title: "Revised Backend (Elysia)",
+        url: "https://github.com/jjhiggz/doomtyper-elysia-backend",
+      },
+      {
+        title: "Revised Frontend (Vite Build)",
+        url: "https://github.com/jjhiggz/doomtyper_frontend_redeploy",
+      },
+      {
+        title: "Play DoomTyper",
+        url: "https://doomtyper.netlify.app/",
       },
     ],
     funToCode: 5,
@@ -304,12 +338,23 @@ export const projects: Project[] = [
     projectUsefulness: 1,
     technologies: [
       ...(
-        ["VueJS", "Javascript", "CSS", "HTML"] satisfies KnownTechnologies[]
+        [
+          "VueJS",
+          "Javascript",
+          "CSS",
+          "HTML",
+          "Elysia",
+          "bun",
+          "Rails",
+          "drizzle-orm",
+          "Postgres",
+        ] satisfies KnownTechnologies[]
       ).map((tech) => technologies[tech]),
     ],
   },
   {
     name: "Property Tracker",
+    loom: "https://www.loom.com/embed/5bdb580e1fa4498ea11127320d7e8cc8?sid=5b0ce983-6222-48b2-a136-30fbc2614aca",
     description:
       "A property tracking application that provides the client with realtime feedback on the customers that are viewing.",
     links: [
@@ -329,6 +374,7 @@ export const projects: Project[] = [
           "TypeScript",
           "ReactQuery",
           "TailwindCSS",
+          "Postgres",
         ] satisfies KnownTechnologies[]
       ).map((tech) => technologies[tech]),
     ],

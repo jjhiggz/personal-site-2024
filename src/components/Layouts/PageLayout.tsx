@@ -10,7 +10,7 @@ export const PageLayout = ({
   children: ReactNode;
 }) => {
   return (
-    <main className="flex h-screen bg-slate-900 relative flex-col overflow-hidden">
+    <main className="flex h-screen bg-gray-900 relative flex-col overflow-hidden">
       <Header />
       <Image
         src={backgroundImage}

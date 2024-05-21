@@ -6,6 +6,7 @@ import { ProjectTechnology } from "./ProjectTechnology";
 import { Project } from "./data";
 import { useRouter } from "next/navigation";
 import { ProjectData } from "./ProjectData";
+import useKeyListener from "@/hooks/useKeyListener";
 
 export const ProjectCard = ({
   project,
@@ -22,6 +23,15 @@ export const ProjectCard = ({
   const shouldShowName = !isAnyProjectSelected;
   const router = useRouter();
 
+  useKeyListener({
+    activeWhen: isThisProjectSelected,
+    handler: () => {
+      router.back();
+    },
+    keys: ["Escape", "Backspace"],
+    onKey: "down",
+  });
+
   return (
     <ProjectCardShell
       {...{ isAnyProjectSelected, isThisProjectSelected, shouldHide }}
@@ -29,7 +39,7 @@ export const ProjectCard = ({
       {shouldShowName && (
         <div
           className={
-            "bg-slate-900 bg-opacity-40 h-full w-full rounded-lg flex justify-center items-center select-none cursor-pointer hover:bg-slate-800 hover:bg-opacity-40 overflow-y-hide"
+            "bg-gray-900 bg-opacity-40 h-full w-full rounded-lg flex justify-center items-center select-none cursor-pointer hover:bg-gray-800 hover:bg-opacity-40 overflow-y-hide"
           }
           onClick={() => {
             setSelectedProject(project);
@@ -40,8 +50,8 @@ export const ProjectCard = ({
       )}
 
       {isAnyProjectSelected && (
-        <div className="p-10 h-full w-full  absolute">
-          <div className="w-full h-full bg-slate-800 bg-opacity-40 rounded-2xl ">
+        <div className="p-10 h-full w-full  absolute select-none">
+          <div className="w-full h-full bg-gray-800 bg-opacity-40 rounded-2xl ">
             <ProjectCardTopPanel
               onClose={() => {
                 router.back();
@@ -63,7 +73,12 @@ export const ProjectCard = ({
               {/* Right */}
               <div className="flex flex-col flex-5 gap-2 px-2 py-2">
                 {/* Video Panel */}
-                <div className="flex-5 bg-red-400 rounded-2xl"></div>
+                <div className="flex-5 bg-gray-900 bg-opacity-75 rounded-2xl">
+                  <iframe
+                    src={project.loom}
+                    style={{ height: "100%", width: "100%" }}
+                  ></iframe>
+                </div>
                 {/* Links */}
                 <div className="flex-3 bg-gray-950 bg-opacity-90 rounded-2xl">
                   <ProjectData project={project} />
@@ -74,6 +89,14 @@ export const ProjectCard = ({
             <div className="w-full flex flex-col p-5 gap-5  font-mono lg:hidden">
               <div className="w-full p-5 md:p-10 bg-gray-900 rounded-2xl bg-opacity-45">
                 <ProjectDescription project={project} />
+              </div>
+
+              <div className="h-96 bg-gray-900 bg-opacity-45 ">
+                <iframe
+                  src={project.loom}
+                  className="h-full w-full "
+                  allowFullScreen={true}
+                ></iframe>
               </div>
               <div className="w-full p-2 md:p-10 bg-gray-900 rounded-2xl bg-opacity-45">
                 <ProjectTechnology project={project} />

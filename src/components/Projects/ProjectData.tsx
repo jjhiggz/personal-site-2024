@@ -46,7 +46,7 @@ export const ProjectData = ({ project }: { project: Project }) => {
                 <a
                   href={link.url}
                   target="_blank"
-                  className="text-md underline"
+                  className="text-md underline text-blue-300"
                 >
                   {link.title}
                 </a>
