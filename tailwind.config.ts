@@ -22,6 +22,15 @@ const config: Config = {
         fade: "fadeIn 1s ease-in-out",
         blink: "blink 2s infinite",
       },
+      flex: {
+        ["2"]: "2",
+        ["3"]: "3",
+        ["4"]: "4",
+        ["5"]: "5",
+        ["6"]: "6",
+        ["7"]: "7",
+        ["8"]: "8",
+      },
 
       keyframes: {
         blink: {
@@ -41,16 +50,29 @@ const config: Config = {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
-      addUtilities({
-        ".drag-none": {
-          "-webkit-user-drag": "none",
-          "-khtml-user-drag": "none",
-          "-moz-user-drag": "none",
-          "-o-user-drag": "none",
-          "user-drag": "none",
+    require("tailwind-scrollbar"),
+    plugin(function ({ addUtilities, matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
         },
-      });
+        {
+          values: theme("transitionDelay"),
+        }
+      ),
+        addUtilities({
+          ".drag-none": {
+            "-webkit-user-drag": "none",
+            "-khtml-user-drag": "none",
+            "-moz-user-drag": "none",
+            "-o-user-drag": "none",
+            "user-drag": "none",
+          },
+        });
     }),
   ],
 };

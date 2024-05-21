@@ -35,7 +35,7 @@ export const useSearchParamsState = <T,>({
   defaultValue,
   key,
 }: {
-  defaultValue: T;
+  defaultValue: T | null;
   key: string;
 }) => {
   const searchParams = useSearchParams();

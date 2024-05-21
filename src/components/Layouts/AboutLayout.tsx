@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
 export const AboutLayout = ({
   image,
@@ -34,7 +34,7 @@ export const AboutLayout = ({
         {/* Mobile */}
         <div className="flex-1 w-full gap-10 z-20 flex flex-col md:hidden">
           <div className=" flex-1  h-5/6   rounded-lg bg-slate-800 bg-opacity-40 p-1 font-mono">
-            {content}
+            <Suspense>{content}</Suspense>
           </div>
 
           <div className=" flex-1  h-5/6  p-3 bg-black rounded-lg">

@@ -1,5 +1,27 @@
 "use client";
 
+import {
+  SiBun,
+  SiCss3,
+  SiDocker,
+  SiElixir,
+  SiHtml5,
+  SiJavascript,
+  SiJest,
+  SiPostgresql,
+  SiPrisma,
+  SiPython,
+  SiReact,
+  SiRemix,
+  SiRuby,
+  SiRust,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+  SiVitest,
+  SiVuedotjs,
+  SiZod,
+} from "react-icons/si";
 import { BackspaceText } from "./BackspaceText";
 
 export const SoftwareDeveloperContent = () => {
@@ -75,6 +97,80 @@ export const SoftwareDeveloperContent = () => {
             </a>
           </li>
         </ul>
+        <br />
+        <div className="flex gap-2">
+          <SiTypescript
+            color="09a1ff"
+            className="animate-bounce animation-delay-0"
+          />
+          <SiElixir
+            color="#a710ed"
+            className="animate-bounce animation-delay-75"
+          />
+          <SiReact
+            color="09a1ff"
+            className="animate-bounce animation-delay-100"
+          />
+          <SiJavascript
+            color="yellow"
+            className="animate-bounce animation-delay-150"
+          />
+          <SiRemix
+            color="09a1ff"
+            className="animate-bounce animation-delay-200"
+          />
+          <SiRuby color="red" className="animate-bounce animation-delay-300" />
+          <SiDocker
+            color="09a1ff"
+            className="animate-bounce animation-delay-500"
+          />
+          <SiPostgresql
+            color="09a1ff"
+            className="animate-bounce animation-delay-700"
+          />
+          <SiRust
+            color="orange"
+            className="animate-bounce animation-delay-1000"
+          />
+          <SiPython
+            color="09a1ff"
+            className="animate-bounce animation-delay-700"
+          />
+          <SiPrisma
+            color="green"
+            className="animate-bounce animation-delay-500"
+          />
+          <SiZod
+            color="salmon"
+            className="animate-bounce animation-delay-300"
+          />
+          <SiTailwindcss
+            color="09a1ff"
+            className="animate-bounce animation-delay-200"
+          />
+          <SiHtml5 color="red" className="animate-bounce animation-delay-150" />
+          <SiCss3
+            color="09a1ff"
+            className="animate-bounce animation-delay-100"
+          />
+          <SiVitest
+            color="yellow"
+            className="animate-bounce animation-delay-75"
+          />
+          <SiVuedotjs
+            color="green"
+            className="animate-bounce animation-delay-0"
+          />
+          <SiVite
+            color="yellow"
+            className="animate-bounce animation-delay-100"
+          />
+          <SiJest
+            color="green"
+            className="animate-bounce animation-delay-150"
+          />
+          <SiBun color="white" className="animate-bounce animation-delay-200" />
+        </div>
       </div>
       <br />
       <BackspaceText />

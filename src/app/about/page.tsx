@@ -2,6 +2,7 @@ import { images } from "../images";
 import { AboutSelector } from "@/components/AboutSelector";
 import { AboutLayout } from "@/components/Layouts/AboutLayout";
 import { TerminalLayout } from "@/components/Terminal/TerminalLayout";
+import { Suspense } from "react";
 
 const AboutPage = () => {
   return (
@@ -9,7 +10,9 @@ const AboutPage = () => {
       image={images.about.main}
       content={
         <>
-          <TerminalLayout content={<AboutSelector />} path="about" />
+          <Suspense>
+            <TerminalLayout content={<AboutSelector />} path="about" />
+          </Suspense>
         </>
       }
       title="About Me..."
