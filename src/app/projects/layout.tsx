@@ -1,10 +1,13 @@
 import { PageLayout } from "@/components/Layouts/PageLayout";
 import { images } from "../images";
-import { ReactNode } from "react";
+
+import { ReactNode, Suspense } from "react";
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <PageLayout backgroundImage={images.backgrounds.background4}>
-      {children}
-    </PageLayout>
+    <Suspense>
+      <PageLayout backgroundImage={images.backgrounds.background4}>
+        {children}
+      </PageLayout>
+    </Suspense>
   );
 }
