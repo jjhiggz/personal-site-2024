@@ -54,7 +54,7 @@ export const ProjectCard = ({
           <div className="w-full h-full bg-gray-800 bg-opacity-40 rounded-2xl ">
             <ProjectCardTopPanel
               onClose={() => {
-                router.back();
+                router.push("/projects");
               }}
             />
             {/* Desktop View */}
@@ -63,7 +63,10 @@ export const ProjectCard = ({
               <div className="flex flex-col flex-3 gap-2 px-2 py-2">
                 {/* Description Panel */}
                 <div className=" w-full flex-1 p-3 px-10 rounded-2xl font-mono bg-gray-950 bg-opacity-90 outline-4 outline-white">
-                  <ProjectDescription project={project} />
+                  <ProjectDescription
+                    project={project}
+                    setSelectedProject={setSelectedProject}
+                  />
                 </div>
                 {/* Technology Panel */}
                 <div className="flex-1 rounded-2xl bg-gray-950 bg-opacity-90">
@@ -88,7 +91,10 @@ export const ProjectCard = ({
             {/* Mobile View */}
             <div className="w-full flex flex-col p-5 gap-5  font-mono lg:hidden">
               <div className="w-full p-5 md:p-10 bg-gray-900 rounded-2xl bg-opacity-45">
-                <ProjectDescription project={project} />
+                <ProjectDescription
+                  project={project}
+                  setSelectedProject={setSelectedProject}
+                />
               </div>
 
               <div className="h-96 bg-gray-900 bg-opacity-45 ">
